@@ -7,59 +7,38 @@ var cuentas = [
 ]
 
 //Variables de validación de credenciales
-let validacionNombre = false
-let validacionPassword = false
+var validacionNombre = false
+var validacionPassword = false
 
 //Usuario introduce credenciales para acceder al sistema
 const usuarioNombre = prompt('Introduce tu nombre de usuario')
 
-
 function revisaPassword() {
-   
-  if (validacionNombre) {
-    while (!validacionPassword) {
-      let usuarioPassword = prompt('Introduce tu password')
-      
-      if (busca.password === usuarioPassword) {
-    
-        console.log(`Hola ${busca.nombre}, puedes hacer transacciones`)
-        validacionPassword = true
-      
-      } else {
-  
-        console.log('Lo siento, no existe un usuario con tu nombre.  Intenta nuevamente.') // no existe
-        let usuarioPassword = prompt('Introduce tu password')
-        }
-    }  
+  console.log('entro a funcion revisaPassword')
+  while (validacionPassword === false) {
+    let usuarioPassword = prompt('Introduce tu password')
+
+    if (busca.password === usuarioPassword) {
+      console.log(`Hola ${busca.nombre} bienvenid@, puedes hacer transacciones`)
+      validacionPassword = true
+    } else
+      console.log('Lo siento, tu password es incorrecto.  Intenta nuevamente.') // no existe
   }
-
-
+}
 
 //Ejecuta esta funcion para validar si el nombre de usuario existe
 if (validacionNombre === false) {
-  function revisaNombre() {
-    const busca = cuentas.find(({ nombre }) => nombre === usuarioNombre)
-    if (busca) {
-      //console.log(busca.password) // devuelve datos de usuario
-      validacionNombre = true
-      revisaPassword()
+  const busca = cuentas.find(({ nombre }) => nombre === usuarioNombre)
+  if (busca) {
+    console.log('entro a verdadero')
+    validacionNombre = true
+    revisaPassword()
+  } else {
+    console.log('no existe tal usuario')
   }
 }
 
-//Valida si usuario existe y su password es correcto
-const busca = cuentas.find(({ nombre }) => nombre === usuarioNombre)
-
- 
-
-  if (busca.password === usuarioPassword) {
-    
-    console.log(`Hola ${busca.nombre}, puedes hacer transacciones`)
-    
-  }
-} else {
-
-  console.log('Lo siento, no existe un usuario con tu nombre.  Intenta nuevamente.') // no existe
-}
+console.log('hasta aqui todo bien')
 
 /*   Backup, esta funcionando, hacemos esto para cambiar a funcion
 //Valida si usuario existe y su password es correcto
@@ -79,7 +58,6 @@ if (busca) {
   console.log('Lo siento, no existe un usuario con tu nombre.  Intenta nuevamente.') // no existe
 }
 */
-
 
 /*
 Al seleccionar una cuenta, debes ingresar el password asociado a la cuenta. Si el password
