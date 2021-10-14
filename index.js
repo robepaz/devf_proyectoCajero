@@ -3,13 +3,15 @@ var cuentas = [
   { nombre: 'Norma', saldo: 200, password: '123' },
   { nombre: 'Marynes', saldo: 290, password: '123' },
   { nombre: 'Diego', saldo: 67, password: '123' },
-  { nombre: 'Rob', saldo: 50, password: '123' },
+  { nombre: 'Rob', saldo: 100, password: '123' },
 ]
 
 //Variables de validación de credenciales
 var validacionNombre = false
 var validacionPassword = false
-var usuarioDatos
+var usuarioDatos = 10
+var seleccionaOperacion = false
+var opcion = '2'
 
 //Usuario introduce credenciales para acceder al sistema
 //const usuarioNombre = prompt('Introduce tu nombre de usuario')
@@ -44,9 +46,46 @@ while (validacionNombre === false) {
 
 console.log('hasta aqui todo bien')
 
-let opcion = prompt('Introduce 1. Para )
+var nuevoSaldo = usuarioDatos.saldo
 
+while (!seleccionaOperacion) {
+  let opcion = prompt(
+    'Introduce 1. Para consultar saldo.  2. Para ingresar monto.  3. Para retirar monto  4. Para salir'
+  )
+  switch (opcion) {
+    case '1':
+      console.log(`Tu saldo es: ${nuevoSaldo}.`)
+      seleccionaOperacion = true
+      break
 
+    case '2':
+      let ingreso = prompt('Introduce la cantidad a ingresar')
+
+      if (parseFloat(ingreso) + nuevoSaldo < 991) {
+        nuevoSaldo = parseFloat(ingreso) + nuevoSaldo
+        console.log(`Ingresaste ${ingreso}, tu saldo es 
+          ${nuevoSaldo}
+        `)
+      } else {
+        console.log(
+          `Lo siento, tu saldo es ${
+            parseFloat(ingreso) + nuevoSaldo
+          } y excede 990, no se pudo completar la transaccion`
+        )
+      }
+
+      //seleccionaOperacion = true
+      break
+
+    case '3':
+      break
+
+    case '4':
+      seleccionaOperacion = true
+  }
+}
+
+console.log('ya pasó por el switch')
 
 /*
 Al seleccionar una cuenta, debes ingresar el password asociado a la cuenta. Si el password
