@@ -1,17 +1,23 @@
 // Arreglo de usuarios, login, password, saldo inicial en cuenta
 var cuentas = [
   { nombre: 'Norma', saldo: 200, password: '123' },
-  { nombre: 'Marynes', saldo: 290, password: '234' },
-  { nombre: 'Diego', saldo: 67, password: '345' },
-  { nombre: 'Roberto', saldo: 50, password: '456' },
+  { nombre: 'Marynes', saldo: 290, password: '123' },
+  { nombre: 'Diego', saldo: 67, password: '123' },
+  { nombre: 'Rob', saldo: 50, password: '123' },
 ]
+
+//Variables de validación de credenciales
+let validacionNombre = false
+let validacionPassword = false
 
 //Usuario introduce credenciales para acceder al sistema
 const usuarioNombre = prompt('Introduce tu nombre de usuario')
 
-let usuarioValidado = false
+
 
 //Valida si usuario existe y su password es correcto
+
+
 const busca = cuentas.find(({ nombre }) => nombre === usuarioNombre)
 if (busca) {
   //console.log(busca.password) // devuelve datos de usuario
@@ -20,7 +26,7 @@ if (busca) {
   if (busca.password === usuarioPassword) {
     
     console.log(`Hola ${busca.nombre}, puedes hacer transacciones`)
-    usuarioValidado = true
+    validacionNombre = true
   }
 } else {
 
