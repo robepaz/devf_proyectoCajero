@@ -14,45 +14,74 @@ let validacionPassword = false
 const usuarioNombre = prompt('Introduce tu nombre de usuario')
 
 
+function revisaPassword() {
+   
+  if (validacionNombre) {
+    while (!validacionPassword) {
+      let usuarioPassword = prompt('Introduce tu password')
+      
+      if (busca.password === usuarioPassword) {
+    
+        console.log(`Hola ${busca.nombre}, puedes hacer transacciones`)
+        validacionPassword = true
+      
+      } else {
+  
+        console.log('Lo siento, no existe un usuario con tu nombre.  Intenta nuevamente.') // no existe
+        let usuarioPassword = prompt('Introduce tu password')
+        }
+    }  
+  }
+
+
+
+//Ejecuta esta funcion para validar si el nombre de usuario existe
+if (validacionNombre === false) {
+  function revisaNombre() {
+    const busca = cuentas.find(({ nombre }) => nombre === usuarioNombre)
+    if (busca) {
+      //console.log(busca.password) // devuelve datos de usuario
+      validacionNombre = true
+      revisaPassword()
+  }
+}
 
 //Valida si usuario existe y su password es correcto
-
-
 const busca = cuentas.find(({ nombre }) => nombre === usuarioNombre)
-if (busca) {
-  //console.log(busca.password) // devuelve datos de usuario
-  const usuarioPassword = prompt('Introduce tu password')
+
+ 
 
   if (busca.password === usuarioPassword) {
     
     console.log(`Hola ${busca.nombre}, puedes hacer transacciones`)
-    validacionNombre = true
+    
   }
 } else {
 
   console.log('Lo siento, no existe un usuario con tu nombre.  Intenta nuevamente.') // no existe
 }
-/*
-//Valida si 
 
-const password = prompt('Introduce tu password');
+/*   Backup, esta funcionando, hacemos esto para cambiar a funcion
+//Valida si usuario existe y su password es correcto
+const busca = cuentas.find(({ nombre }) => nombre === usuarioNombre)
+if (busca) {
+  //console.log(busca.password) // devuelve datos de usuario
+  validacionNombre = true
+  const usuarioPassword = prompt('Introduce tu password')
 
+  if (busca.password === usuarioPassword) {
+    
+    console.log(`Hola ${busca.nombre}, puedes hacer transacciones`)
+    
+  }
+} else {
 
-const inventory = [
-    {name: 'apples', quantity: 2},
-    {name: 'bananas', quantity: 0},
-    {name: 'cherries', quantity: 5}
-  ];
-  
-  const result = inventory.find( ({ name }) => name === 'cherries' );
-  
-  console.log(result) // { name: 'cherries', quantity: 5 }
-
+  console.log('Lo siento, no existe un usuario con tu nombre.  Intenta nuevamente.') // no existe
+}
 */
 
-/*
-var jugador1 = prompt('Jugador 1, qué eliges? piedra, papel o tijera?')
 
+/*
 Al seleccionar una cuenta, debes ingresar el password asociado a la cuenta. Si el password
 es incorrecto, debes notificar al usuario y permitirle intentarlo nuevamente. Si el password es
 correcto, debes mostrar las siguientes opciones:
