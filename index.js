@@ -55,7 +55,7 @@ while (!seleccionaOperacion) {
   switch (opcion) {
     case '1':
       console.log(`Tu saldo es: ${nuevoSaldo}.`)
-      seleccionaOperacion = true
+
       break
 
     case '2':
@@ -74,10 +74,24 @@ while (!seleccionaOperacion) {
         )
       }
 
-      //seleccionaOperacion = true
       break
 
     case '3':
+      let retiro = prompt('Introduce la cantidad a retirar')
+
+      if (nuevoSaldo - parseFloat(retiro) > 10) {
+        nuevoSaldo = nuevoSaldo - parseFloat(retiro)
+        console.log(`Retiraste ${retiro}, tu saldo es 
+          ${nuevoSaldo}
+        `)
+      } else {
+        console.log(
+          `Lo siento, tu saldo es ${
+            nuevoSaldo - parseFloat(retiro)
+          } y es menor a 10, no se pudo completar la transaccion`
+        )
+      }
+
       break
 
     case '4':
@@ -85,7 +99,7 @@ while (!seleccionaOperacion) {
   }
 }
 
-console.log('ya pasó por el switch')
+console.log('Gracias por usar nuestro cajero')
 
 /*
 Al seleccionar una cuenta, debes ingresar el password asociado a la cuenta. Si el password
